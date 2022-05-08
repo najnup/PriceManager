@@ -37,8 +37,6 @@ def home():
 
     return render_template('index.html', date = title_date, before_price = float(before_price.replace(',','.')), now_price = float(now_price.replace(',','.')), future_price = float(future_price.replace(',','.')), average_price = average_price)
 
-app.run(host='0.0.0.0', port='8080')
-
 ### Roadmap ###
 # DONE - Find where to host the site (Will be hosted on digital ocean)
 # Add -2h and +2h redo all that in list... so it is adjusting to input. Have a legend and price value.
