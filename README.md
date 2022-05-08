@@ -1,1 +1,1 @@
-# PriceManager
+using  - https://chartscss.org/docs/installation/#download

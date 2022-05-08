@@ -1,0 +1,19 @@
+<!doctype html>
+<title>Electricity lookup for - {{ date }}</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='styles/stylesheet.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='styles/charts.min.css') }}">
+
+<body>
+
+<table id="column-example-16" class="charts-css column show-labels show-primary-axis show-data-axes"><caption> Column Example #16 </caption> 
+    <thead><tr><th scope="col"> Year </th> <th scope="col"> Progress </th></tr></thead>
+    <tbody>
+        <tr><th scope="row">-1 h</th> <td style="--size:{{ before_price / (2 * average_price) }};">{{ '%0.2f' | format(before_price / 1000) }} EUR/kWh</td></tr>
+        <tr><th scope="row">Now</th> <td style="--size:{{ now_price / (2 * average_price) }}; --color: orange;">{{'%0.2f' | format(now_price / 1000) }} EUR/kWh</td></tr>
+        <tr><th scope="row">+1 h</th> <td style="--size:{{ future_price / (2 * average_price) }};">{{ '%0.2f' | format(future_price / 1000) }} EUR/kWh</td></tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>
