@@ -1,0 +1,16 @@
+name: oyster-app
+region: fra
+services:
+- environment_slug: python
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: najnup/PriceManager
+  http_port: 8080
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: pricemanager
+  routes:
+  - path: /
+  run_command: gunicorn --worker-tmp-dir /dev/shm price_manager:app
+  source_dir: /
