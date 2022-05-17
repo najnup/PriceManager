@@ -7,9 +7,9 @@ body {
     background-color:lightgrey;
   }
   
-  #column-example-16 {
-    height: 200px;
-    max-width: 300px;
+  #price-table {
+    height: 50%;
+    max-width: 50%;
     margin: 0 auto;
     --color: red;
   }

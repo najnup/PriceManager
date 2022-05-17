@@ -66,7 +66,7 @@ def get_price(price_data, time = datetime.now()):
             return row['Price']
     
     ### For cases when no price could have been returned
-    return "None"
+    return "0"
 
 def get_average(prices_data):
     ### Function is returning average prace for that day
