@@ -6,7 +6,7 @@ from nord_pool_module import local_time, pool_prices, get_price, get_average
 from flask import Flask,render_template,request
 
 ### Flag that sets where and how app will run
-development = True
+development = False
 
 """
 Description:
