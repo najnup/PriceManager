@@ -8,8 +8,8 @@ body {
   }
   
   #price-table {
-    height: 50%;
-    max-width: 50%;
+    height: 80%;
+    max-width: 80%;
     margin: 0 auto;
     --color: red;
   }
