@@ -4,9 +4,11 @@ from datetime import datetime
 from datetime import timedelta
 from nord_pool_module import local_time, pool_prices, get_price, get_average
 from flask import Flask,render_template,request
+import logging
 
 ### Flag that sets where and how app will run
-development = True
+development = False
+logging.basicConfig(filename='app.log', encoding='utf-8', level=logging.INFO)
 
 """
 Description:
@@ -49,9 +51,10 @@ def home():
     global prices_data
     LOCAL_TIME = local_time()
     print('Page loaded at: ', str(local_time(1)))
+    logging.info('Page has loaded!')
     if get_price(prices_data, LOCAL_TIME) == '0':
         ### If this condition is met then prices_data has to be renewed
-        print('Have to renew prices!')
+        logging.info('Prices have to be renewed!')
         prices_data = pool_prices(LOCAL_TIME)
     
     ### List of prices
@@ -69,6 +72,7 @@ if development:
 
 # In place where is now add current time
 # Gradual coloring for prices
+# Add logging to the application 
 # DONE - Make fit good when looked upon mobile device. Asdjust procentages
 # DONE - Find where to host the site (Will be hosted on digital ocean)
 # DONE - Create that prices are not obtained all the time (request is not made every time site is accessed)
