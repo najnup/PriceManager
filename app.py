@@ -1,5 +1,11 @@
 #!/usr/bin/env python
 
+"""
+Description:
+Author:
+Date: 
+"""
+
 from datetime import datetime
 from datetime import timedelta
 from nord_pool_module import local_time, pool_prices, get_price, get_average
@@ -8,13 +14,8 @@ import logging
 
 ### Flag that sets where and how app will run
 development = False
-logging.basicConfig(filename='app.log', encoding='utf-8', level=logging.INFO)
+logging.basicConfig(filename='app.log', encoding='utf-8', level=logging.INFO, format='%(asctime)s:%(levelname)s:%(message)s')
 
-"""
-Description:
-Author:
-Date: 
-"""
 ### Define dictionary preparation function
 def prepare_dict(prices_data, local_time):
     ### Funcrtion prepares dictionary of the price values that will be displayed on webpage.
@@ -22,7 +23,7 @@ def prepare_dict(prices_data, local_time):
     number = 5
 
     if number%2 == 0:
-        print('Please, select odd number!')
+        logging.info('Please, select odd number!')
         return None
 
     ### Offset values for dictionaries
@@ -36,7 +37,6 @@ def prepare_dict(prices_data, local_time):
         prices_dict.append({'hour':current, 'price':float(current_price.replace(',','.'))})
     return prices_dict
 
-print('Starting app', str(local_time(1)))
 ### Pool prices
 prices_data = pool_prices(local_time())
 print(prepare_dict(prices_data,local_time(1)))
@@ -48,14 +48,15 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
+    logging.info('New page visit!')
+    logging.info(request.remote_addr)
+    
     global prices_data
     LOCAL_TIME = local_time()
-    print('Page loaded at: ', str(local_time(1)))
-    logging.info('Page has loaded!')
     if get_price(prices_data, LOCAL_TIME) == '0':
         ### If this condition is met then prices_data has to be renewed
-        logging.info('Prices have to be renewed!')
         prices_data = pool_prices(LOCAL_TIME)
+        logging.info('Prices renewed')
     
     ### List of prices
     prices_dict = prepare_dict(prices_data, LOCAL_TIME)
@@ -66,13 +67,19 @@ def home():
 
 ### This is for development
 if development: 
+    logging.info('App loaded in Debugging mode')
     app.run(host='0.0.0.0', port='8080')
 
 ### Roadmap ###
 
 # In place where is now add current time
 # Gradual coloring for prices
-# Add logging to the application 
+# Add Marker for the current day
+# Add descriptions to the page. Disclosure
+# Add code descriptions
+# Add exception handling 
+# Clean code
+# DONE - Add logging to the application
 # DONE - Make fit good when looked upon mobile device. Asdjust procentages
 # DONE - Find where to host the site (Will be hosted on digital ocean)
 # DONE - Create that prices are not obtained all the time (request is not made every time site is accessed)
