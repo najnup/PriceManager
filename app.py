@@ -20,14 +20,17 @@ logging.basicConfig(filename='app.log', encoding='utf-8', level=logging.INFO, fo
 def prepare_dict(prices_data, local_time):
     ### Funcrtion prepares dictionary of the price values that will be displayed on webpage.
     ### variable returning certain number of items in dictionary, has to be uneven
-    number = 5
+    number = 9
 
     if number%2 == 0:
         logging.info('Please, select odd number!')
         return None
 
     ### Offset values for dictionaries
-    offset = -(number-1)/2
+    #offset = -(number-1)/2 - used to start in the middle
+    offset = -2
+    
+    
     ### Define dictionary
     prices_dict = []
 
@@ -53,17 +56,24 @@ def home():
     
     global prices_data
     LOCAL_TIME = local_time()
-    if get_price(prices_data, LOCAL_TIME) == '0':
-        ### If this condition is met then prices_data has to be renewed
-        prices_data = pool_prices(LOCAL_TIME)
-        logging.info('Prices renewed')
     
-    ### List of prices
-    prices_dict = prepare_dict(prices_data, LOCAL_TIME)
-    average_price = get_average(prices_data)
-    title_date = LOCAL_TIME.strftime('%d-%m-%Y')
+    try:
+        ### If successful will render the page
+        if get_price(prices_data, LOCAL_TIME) == '0':
+            ### If this condition is met then prices_data has to be renewed
+            prices_data = pool_prices(LOCAL_TIME)
+            logging.info('Prices renewed')
+        
+        ### List of prices
+        prices_dict = prepare_dict(prices_data, LOCAL_TIME)
+        average_price = get_average(prices_data)
+        title_date = LOCAL_TIME.strftime('%d-%m-%Y')
 
-    return render_template('index.html', date = title_date, prices_dict = prices_dict, average_price = average_price)
+        return render_template('index.html', date = title_date, prices_dict = prices_dict, average_price = average_price)
+    
+    except:
+        ### Executigng this if page has failed.
+        print('There was somethoing terribly wrong with the page.')
 
 ### This is for development
 if development: 
