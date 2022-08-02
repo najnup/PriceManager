@@ -82,13 +82,11 @@ if development:
 
 ### Roadmap ###
 
-# In place where is now add current time
-# Gradual coloring for prices
-# Add Marker for the current day
 # Add descriptions to the page. Disclosure
 # Add code descriptions
-# Add exception handling 
+# Add exception handling
 # Clean code
+# DONE - Add Marker for the current hour
 # DONE - Add logging to the application
 # DONE - Make fit good when looked upon mobile device. Asdjust procentages
 # DONE - Find where to host the site (Will be hosted on digital ocean)

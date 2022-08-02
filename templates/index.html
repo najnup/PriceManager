@@ -9,7 +9,9 @@
     <thead><tr><th scope="col"> Year </th> <th scope="col"> Progress </th></tr></thead>
     <tbody>
         {% for item in prices_dict %}
-            {% if item['price'] < average_price %}
+            {% if item['hour'] == 0 %}
+                {% set coloring = 'orange' %}
+            {% elif item['price'] < average_price %}
                 {% set coloring = 'green' %}
             {% else %}
                 {% set coloring = 'red' %}
