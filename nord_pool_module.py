@@ -2,10 +2,11 @@
 
 """
 Description: This part for dayly electricity price extraction is used to decrease and maintain household electricity consumption. This part of code delivers current price avialable and makes current price more easily observable. Goal is to decrease electricity bill.
-Author: NajNup
+Author: najnup
 Start Date: 03.03.2022
 Disclaimer: In this example NordPool price extraction is used for learning purposes not used for commercial purpose in any way. NordPool has data portal available, more details on - https://www.nordpoolgroup.com/en/services/power-market-data-services/dataportalregistration/
             All information here is used merely for educational and informational purposes. It is not intended as a substitute for professional advice. Should you decide to act upon any information here, you do so at your own risk.
+
 """
 
 import json
@@ -81,4 +82,3 @@ print('All functions loaded!')
 
 if __name__ == "__main__":
     print("This is the part that will run!")
-    

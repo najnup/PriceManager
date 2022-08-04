@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
 """
-Description:
-Author:
-Date: 
+Description: Application built to folow price changes. Using python module for Nord Pool price extraction for LV region.
+Author: Najnup
+Date: 03.03.2022
+Disclaimer: In this example NordPool price extraction is used for learning purposes not used for commercial purpose in any way. NordPool has data portal available, more details on - https://www.nordpoolgroup.com/en/services/power-market-data-services/dataportalregistration/
+            All information here is used merely for educational and informational purposes. It is not intended as a substitute for professional advice. Should you decide to act upon any information here, you do so at your own risk.
 """
 
 from datetime import datetime
@@ -79,17 +81,3 @@ def home():
 if development: 
     logging.info('App loaded in Debugging mode')
     app.run(host='0.0.0.0', port='8080')
-
-### Roadmap ###
-
-# Add descriptions to the page. Disclosure
-# Add code descriptions
-# Add exception handling
-# Clean code
-# DONE - Add Marker for the current hour
-# DONE - Add logging to the application
-# DONE - Make fit good when looked upon mobile device. Asdjust procentages
-# DONE - Find where to host the site (Will be hosted on digital ocean)
-# DONE - Create that prices are not obtained all the time (request is not made every time site is accessed)
-# DONE - Add -2h and +2h redo all that in list... so it is adjusting to input. Have a legend and price value.
-# DONE - Adding of a coloring, when for example price is lower that average
