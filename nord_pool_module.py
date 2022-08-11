@@ -75,7 +75,7 @@ def get_average(prices_data):
     sum_prices = 0
     ### Acumulate all days prices
     for row in prices_data:
-        sum_prices += float(row['Price'].replace(',', '.'))
+        sum_prices += float(row['Price'].replace(',', '.').replace(' ', ''))
     return (sum_prices//len(prices_data))
 
 print('All functions loaded!')
